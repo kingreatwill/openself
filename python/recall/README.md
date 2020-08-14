@@ -15,3 +15,5 @@ setDefault
 pip install pip -U # pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pip -U
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+### Flask
+https://blog.csdn.net/angus_17/article/details/80455838

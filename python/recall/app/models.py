@@ -1,23 +1,37 @@
 from datetime import datetime
 from bson import ObjectId
-from mongoengine import *
+from flask_mongoengine import MongoEngine
+
+db = MongoEngine()
 
 
-class ResourceBlob(Document):
-    blob_id = ObjectIdField(default=ObjectId(), required=True, primary_key=True)
-    hash = StringField(required=True, max_length=50)
-    md5 = StringField(required=True, max_length=50)
-    blob = FileField(required=True, db_alias='recall-db-alias')
-    create_time = DateTimeField(default=datetime.now(), required=True)
+class ResourceBlob(db.Document):
+    blob_id = db.ObjectIdField(default=ObjectId(), required=True, primary_key=True)
+    hash = db.StringField(required=True, max_length=50)
+    md5 = db.StringField(required=True, max_length=50)
+    blob = db.FileField(required=True, db_alias='recall-db-alias')
+    create_time = db.DateTimeField(default=datetime.now(), required=True)
+
+    meta = {'db_alias': 'recall-db-alias'}
+
+    def keys(self):
+        return ["blob_id", "hash", "md5", "blob", "create_time"]
+
+    def __getitem__(self, item):
+        return getattr(self, item)
+
+
+class Resource(db.Document):
+    resource_id = db.ObjectIdField(default=ObjectId(), required=True, primary_key=True)
+    blob_id = db.ObjectIdField(required=True)
+    title = db.StringField(max_length=50)
+    tags = db.ListField(db.StringField(max_length=30, required=True))
+    create_time = db.DateTimeField(default=datetime.now(), required=True)
 
     meta = {'db_alias': 'recall-db-alias'}
 
+    def keys(self):
+        return ["resource_id", "blob_id", "title", "tags", "create_time"]
 
-class Resource(Document):
-    resource_id = ObjectIdField(default=ObjectId(), required=True, primary_key=True)
-    blob_id = ObjectIdField(required=True)
-    title = StringField(max_length=50)
-    tags = ListField(StringField(max_length=30, required=True))
-    create_time = DateTimeField(default=datetime.now(), required=True)
-
-    meta = {'db_alias': 'recall-db-alias'}
+    def __getitem__(self, item):
+        return getattr(self, item)
