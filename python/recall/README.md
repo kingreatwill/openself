@@ -20,3 +20,7 @@ https://blog.csdn.net/angus_17/article/details/80455838
 
 ### opentelemetry
 https://opentelemetry-python.readthedocs.io/en/stable/
+
+### prometheus
+https://github.com/prometheus/client_python
+https://github.com/rycus86/prometheus_flask_exporter

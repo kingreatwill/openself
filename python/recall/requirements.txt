@@ -17,6 +17,7 @@ opentelemetry-instrumentation-pymongo==0.12b0
 opentelemetry-instrumentation-wsgi==0.12b0
 opentelemetry-sdk==0.12b0
 Pillow==7.2.0
+prometheus-client==0.8.0
 pymongo==3.11.0
 python-magic==0.4.18
 python-magic-bin==0.4.14

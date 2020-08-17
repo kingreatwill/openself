@@ -1,12 +1,11 @@
-from flask import Flask, Response, jsonify
+from flask import Flask
 from controller import index, admin
-from .models import db
+from models import db
 from core import tracing
 from core.jsonlib import RecallJSONEncoder
 from opentelemetry.instrumentation.pymongo import PymongoInstrumentor
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
-from opentelemetry.instrumentation.wsgi import OpenTelemetryMiddleware
-
+from prometheus_flask_exporter import PrometheusMetrics
 
 def create_app(config):
     app = Flask(__name__)
@@ -14,7 +13,6 @@ def create_app(config):
     # mongodb config
     app.config['MONGODB_SETTINGS'] = {
         'db': 'recall',
-        'alias': 'recall-db-alias',
         'host': '127.0.0.1',
         'port': 27017
     }
@@ -24,6 +22,8 @@ def create_app(config):
         'agent_host_name': '192.168.110.252',
         'agent_port': 6831
     }
+    # metrics
+    metrics = PrometheusMetrics(app)
     # Tracing
     tracing.init_app(app)
     # OpenTelemetry pymongo Instrumentation

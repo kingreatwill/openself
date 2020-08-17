@@ -1,6 +1,11 @@
 from mongoengine import connect
 
+from models import *
+
 
 class Domain:
-    def __init__(self):
-        ...#connect(db='recall', alias="recall-db-alias", host='127.0.0.1', port=27017)
+    def __init__(self, model):
+        self.model = model
+
+    def get(self, id):
+        return self.model.objects(**{self.model.key(): id}).first()
