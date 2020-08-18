@@ -2,6 +2,8 @@ import io
 
 from PIL import Image
 from flask import Blueprint, jsonify, render_template, send_file, request
+from flask_restful import reqparse
+
 from core import mongolib, convlib, imagelib
 from domain.resource import ResourceDomain
 
@@ -42,12 +44,22 @@ def update(id):
 # http://127.0.0.1:5000/img/5f3b471842b7e25d1aeac4c4?width=500&height=100&resample=5&quality=95&force=resize
 @controller.route('/img/<id>', methods=['GET'])
 def img(id):
+    parser = reqparse.RequestParser()
+    parser.add_argument('format', type=str, help='文件后缀')
+    parser.add_argument('width', type=int, default=0, help='图片宽')
+    parser.add_argument('height', type=int, default=0, help='图片高')
+    parser.add_argument('force', type=str, default="resize", help='处理类型(resize,中心裁剪：crop_center:1)')
+    parser.add_argument('resample', type=int, default=1, help='重新采样使用的方法')
+    parser.add_argument('quality', type=int, default=100, help='图片质量')
+    args = parser.parse_args()
+
     resource = ResourceDomain().get(id)
     if imagelib.is_img(resource.extension):
         file = mongolib.get(resource.blob_id)
-        byte_io = imagelib.thumbnail(io.BytesIO(file.read()), format=file.extension,
-                                     **request.args)
-        return send_file(byte_io, mimetype=file.content_type)
+        if not args["format"]:
+            args["format"] = file.extension
+        byte_io = imagelib.thumbnail(io.BytesIO(file.read()), **args)
+        return send_file(byte_io, mimetype=imagelib.to_mimetype(args["format"]))  # mimetype=file.content_type
     return "Error image type."
 
 
