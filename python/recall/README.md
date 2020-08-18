@@ -18,6 +18,12 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ### Flask
 https://blog.csdn.net/angus_17/article/details/80455838
 
+参数验证
+https://github.com/wtforms/wtforms
+
+https://github.com/flask-restful/flask-restful
+https://github.com/rantav/flask-restful-swagger
+
 ### opentelemetry
 https://opentelemetry-python.readthedocs.io/en/stable/
 

@@ -1,6 +1,7 @@
 import unittest
 
 from bson import ObjectId
+from flask_restful import reqparse
 from gridfs import GridFS
 from mongoengine import connect, get_db
 from werkzeug.datastructures import FileStorage
@@ -94,7 +95,12 @@ class TestModels(unittest.TestCase):
 
         # 将会返回所有tags包含coding的文档
         # Posts.objects(tags='coding')
-
+    def test_flask_restful(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument('index', type=int, help='page index')
+        parser.add_argument('size', type=int, help='page index')
+        args = parser.parse_args()
+        print(args)
 
 # def report(request):
 #     if request.method == 'POST':

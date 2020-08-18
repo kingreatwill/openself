@@ -25,7 +25,7 @@ class Resource(db.Document):
 
     def keys(self):
         return ["resource_id", "blob_id", "filename", "title", "tags", "mimetype", "sha1", "md5", "length",
-                "extension","create_time"]
+                "extension", "create_time"]
 
     def __getitem__(self, item):
         return getattr(self, item)

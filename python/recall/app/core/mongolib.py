@@ -23,14 +23,14 @@ class FileMeta:
 def __put(f, name):
     fs = GridFS(get_db())
     # 计算文件属性
-    extension = os.path.splitext(name)[1]
+    extension = os.path.splitext(name)[1].lower()
     mimetype = filelib.mime(f)
     sha1 = filelib.sha1(f)
     md5 = filelib.md5(f)
     arg = {'mimetype': mimetype, 'sha1': sha1, 'md5': md5}
     exist_fs = fs.find_one(arg)
     if exist_fs:
-        return FileMeta(file_id=exist_fs._id, length=exist_fs.length, extension=newfile.extension, **arg)
+        return FileMeta(file_id=exist_fs._id, length=exist_fs.length, extension=exist_fs.extension, **arg)
 
     newfile = fs.new_file(content_type=mimetype, name=name, extension=extension, **arg)
     newfile.write(f)
