@@ -34,7 +34,7 @@ class TestModels(unittest.TestCase):
             exist_blob = models.ResourceBlob.objects(md5=blob.md5).first()
             if not exist_blob:
                 # 保存文件；
-                blob.blob.put(fd, content_type=content_type,hash="xxxx")
+                blob.blob.put(fd, content_type=content_type, hash="xxxx")
                 blob.blob.write()
                 blob.save()
             blob_id = exist_blob.blob_id
@@ -53,7 +53,6 @@ class TestModels(unittest.TestCase):
     def test_save3(self):
         # 测试删除是否会删除文件；答案：会！设计时要注意！！！
         models.ResourceBlob.objects.get(blob_id='5f35f477ef9902520ea63a1a').delete()
-
 
     def test_fs(self):
         fs = GridFS(get_db(alias="recall-db-alias"))
@@ -137,6 +136,13 @@ def get2(f: FileStorage):
     newfile.write(f.stream)  # f.stream.read()
     newfile.close()
     return newfile._id, arg
+
+
+def create(**kwargs):
+    model = {}
+    for name, value in kwargs.items():
+        setattr(model, name, value)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,10 +1,11 @@
 # 上传文件
 import dataclasses
+import os
 
 from bson import ObjectId
 from gridfs import GridFS
 from mongoengine import get_db
-from werkzeug.datastructures import FileStorage
+import typing
 
 from core import filelib
 
@@ -15,29 +16,35 @@ class FileMeta:
     mimetype: str
     sha1: str
     md5: str
+    length: int
+    extension: str
 
 
-def __put(f):
+def __put(f, name):
     fs = GridFS(get_db())
     # 计算文件属性
+    extension = os.path.splitext(name)[1]
     mimetype = filelib.mime(f)
     sha1 = filelib.sha1(f)
     md5 = filelib.md5(f)
     arg = {'mimetype': mimetype, 'sha1': sha1, 'md5': md5}
     exist_fs = fs.find_one(arg)
     if exist_fs:
-        return FileMeta(file_id=exist_fs._id,
-                        **{'mimetype': exist_fs.mimetype, 'sha1': exist_fs.sha1, 'md5': exist_fs.md5})
+        return FileMeta(file_id=exist_fs._id, length=exist_fs.length, extension=newfile.extension, **arg)
 
-    return FileMeta(file_id=fs.put(f, content_type=mimetype, **arg),
-                    **arg)
+    newfile = fs.new_file(content_type=mimetype, name=name, extension=extension, **arg)
+    newfile.write(f)
+    newfile.close()
+    return FileMeta(file_id=newfile._id, length=newfile.length, extension=newfile.extension, **arg)
 
 
-def put(file):
+def put(file, name=None):
     if isinstance(file, str):
         with open(file, 'rb') as fd:
-            return __put(fd)
-    return __put(file)
+            if not name:
+                name = os.path.basename(file)
+            return __put(fd, name)
+    return __put(file, name)
 
 
 # 获取文件

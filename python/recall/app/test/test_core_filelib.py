@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from bson import ObjectId
@@ -8,6 +9,10 @@ from core import filelib, mongolib
 
 class TestCore(unittest.TestCase):
     def test_filelib(self):
+        print(os.path.splitext('e:/xxx.jpg'))
+        print(os.path.splitext('/xxx'))
+        print(os.path.basename('xxx.jpg'))
+        print(os.path.basename('/xxx.jpg'))
         print(filelib.mime('xxx.jpg'))
 
     def test_mongolib(self):
