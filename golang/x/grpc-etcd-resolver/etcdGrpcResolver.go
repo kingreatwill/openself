@@ -1,4 +1,4 @@
-package etcd
+package grpc_etcd_resolver
 
 import "google.golang.org/grpc/resolver"
 

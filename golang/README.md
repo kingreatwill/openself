@@ -3,6 +3,7 @@ go.etcd.io/etcd => github.com/etcd-io/etcd
 golang.org/x/net => github.com/golang/net
 
 ## etcd
+https://github.com/mbobakov/grpc-consul-resolver
 ```
 package etcd
 import (
