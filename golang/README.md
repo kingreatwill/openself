@@ -3,6 +3,9 @@ go.etcd.io/etcd => github.com/etcd-io/etcd
 golang.org/x/net => github.com/golang/net
 
 ## etcd
+等3.5做（规范问题以及不支持grpc v1.30.0）
+> https://github.com/etcd-io/etcd/issues/11154#issuecomment-620886957
+
 https://github.com/mbobakov/grpc-consul-resolver
 ```
 package etcd
