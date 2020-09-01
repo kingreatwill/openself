@@ -42,6 +42,9 @@ func xx(){
 ## orm
 https://github.com/facebook/ent
 
+jinzhu/gorm v1.20.0 全新发布
+https://gorm.io/zh_CN/docs/v2_release_note.html
+
 ## 其它
 常用的验证工具
 https://github.com/asaskevich/govalidator
