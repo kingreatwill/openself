@@ -16,7 +16,7 @@
 
 ## 博客系统 shamped
 语言：dotnet
-
+https://github.com/cloudscribe/cloudscribe.SimpleContent
 ## 文件系统 recall
 包含处理图片（后期考虑图片AI应用以及在线PDF，Office等）
 
