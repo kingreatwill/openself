@@ -16,7 +16,16 @@
 
 ## 博客系统 shamped
 语言：dotnet
+### blog参考项目
 https://github.com/cloudscribe/cloudscribe.SimpleContent
+https://github.com/shawnwildermuth/WilderBlog
+https://github.com/EdiWang/Moonglade
+### blog相关组件
+https://github.com/shawnwildermuth/metaweblog
+https://github.com/shawnwildermuth/RssSyndication
+博客系统设计要点
+https://github.com/openjw/open/blob/master/articles/blog-design.md
+
 ## 文件系统 recall
 包含处理图片（后期考虑图片AI应用以及在线PDF，Office等）
 
