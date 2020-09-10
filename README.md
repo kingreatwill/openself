@@ -44,6 +44,12 @@ https://github.com/openjw/open/blob/master/articles/blog-design.md
 
 语言待定：java、dotnet
 
+
+知识管理工具
+- Baklib
+- 语雀
+- 印象笔记
+
 ## 其它基础设施
 语言: golang
 
