@@ -15,11 +15,15 @@
 语言待定：golang、dotnet
 
 ## 博客系统 shamped
+study hard and make progress every day
 语言：dotnet
 ### blog参考项目
 https://github.com/cloudscribe/cloudscribe.SimpleContent
 https://github.com/shawnwildermuth/WilderBlog
+
+
 https://github.com/EdiWang/Moonglade
+- Post Slug
 ### blog相关组件
 https://github.com/shawnwildermuth/metaweblog
 https://github.com/shawnwildermuth/RssSyndication
