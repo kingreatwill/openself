@@ -96,23 +96,7 @@ namespace Shamped.Sword
             doc.Root.Add(head_XE);
 
             var body_XE = new XElement("body");
-            var outlineType = typeof(Outline);
-            foreach (var outline in Outlines)
-            {
-                var outline_XE = new XElement("outline");
-                foreach (var item in outlineType.GetProperties())
-                {
-                    var attr = item.GetCustomAttribute<CategoryAttribute>();
-                    if (attr != null && attr.Category == "outline")
-                    {
-                        var value = item.GetValue(outline);
-                        if (value!=null && !string.IsNullOrWhiteSpace(value.ToString()))
-                            outline_XE.Add(new XAttribute(item.Name.FirstCharToLower(), value));
-                    }
-                }
-                body_XE.Add(outline_XE);
-            }
-
+            AddOutline(body_XE, Outlines);
             doc.Root.Add(body_XE);
 
             // 输出;
@@ -121,6 +105,32 @@ namespace Shamped.Sword
                 doc.Save(writer);
             return builder.ToString();
         }
+
+        public void AddOutline(XElement pXElement, List<Outline> outlines)
+        {
+            var outlineType = typeof(Outline);
+            foreach (var outline in outlines)
+            {
+                var outline_XE = new XElement("outline");
+                foreach (var item in outlineType.GetProperties())
+                {
+                    var attr = item.GetCustomAttribute<CategoryAttribute>();
+                    if (attr != null && attr.Category == "outline")
+                    {
+                        var value = item.GetValue(outline);
+                        if (value != null && !string.IsNullOrWhiteSpace(value.ToString()))
+                            outline_XE.Add(new XAttribute(item.Name.FirstCharToLower(), value));
+                    }
+                }
+                if (outline.Outlines != null && outline.Outlines.Count > 0)
+                {
+                    AddOutline(outline_XE, outline.Outlines);
+                }
+                pXElement.Add(outline_XE);
+            }
+        }
+
+
         internal class OpmlStringWriter : StringWriter
         {
             private readonly Encoding encoding;
