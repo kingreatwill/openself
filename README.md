@@ -26,12 +26,17 @@ https://github.com/EdiWang/Moonglade
 - Post Slug
 ### blog相关组件
 https://github.com/shawnwildermuth/metaweblog
+
+RSS / ATOM / RSD / OPML / APML / BlogML / Yahoo Media / iTunes
 https://github.com/shawnwildermuth/RssSyndication
+https://github.com/stimpy77/Argotic
+https://github.com/argotic-syndication-framework/Argotic
+
 博客系统设计要点
 https://github.com/openjw/open/blob/master/articles/blog-design.md
 
 ## 文件系统 recall
-包含处理图片（后期考虑图片AI应用以及在线PDF，Office等）
+包含处理图片（后期考虑图片AI应用以及在线PDF，Office等 电子书和文库：图片、标题、tag 、副标题、作者、日期、ISBN、简介、目录、页码、大小、格式;  ）
 
 语言：python
 
