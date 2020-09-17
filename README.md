@@ -35,6 +35,10 @@ https://github.com/argotic-syndication-framework/Argotic
 博客系统设计要点
 https://github.com/openjw/open/blob/master/articles/blog-design.md
 
+界面风格：https://sysin.org/article/Download-VMware-Workstation-16/
+模板选择：color_admin_v4.6\admin\template\template_google_startup
+默认租户ID:1
+
 ## 文件系统 recall
 包含处理图片（后期考虑图片AI应用以及在线PDF，Office等 电子书和文库：图片、标题、tag 、副标题、作者、日期、ISBN、简介、目录、页码、大小、格式;  ）
 
