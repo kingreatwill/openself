@@ -46,6 +46,7 @@ https://github.com/openjw/open/blob/master/articles/blog-design.md
 
 数据库: mongodb
 
+文库：https://github.com/TruthHun/DocHub
 ## 笔记系统 record
 收藏，笔记以及代码片段等
 
