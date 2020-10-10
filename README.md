@@ -40,13 +40,17 @@ https://github.com/openjw/open/blob/master/articles/blog-design.md
 默认租户ID:1
 
 ## 文件系统 recall
-包含处理图片（后期考虑图片AI应用以及在线PDF，Office等 电子书和文库：图片、标题、tag 、副标题、作者、日期、ISBN、简介、目录、页码、大小、格式;  ）
+包含处理图片（后期考虑图片AI应用(识别文字和分类-苹果，座位..；方便全文检索)以及在线PDF，Office等 电子书和文库：图片、标题、tag 、副标题、作者、日期、ISBN、简介、目录、页码、大小、格式;  ）
 
 语言：python
 
 数据库: mongodb
 
 文库：https://github.com/TruthHun/DocHub
+文档管理系统：https://github.com/ciur/papermerge
+纸质文档经过其 OCR 扫描并编入索引后，便可快速在线上进行全文搜索与管理，进一步提高文件查找效率。
+当前该系统支持 pdf，jpg，png，tiff 等格式的文档，拥有多用户、权限管理、页面管理、全局搜索等功能。
+
 ## 笔记系统 record
 收藏，笔记以及代码片段等
 
