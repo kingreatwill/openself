@@ -1,0 +1,26 @@
+﻿@using System.ComponentModel
+@inject Head head
+<meta charset="utf-8" />
+<title>@head.Title</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+<meta content="@head.Description" name="description" />
+<meta content="@head.Author" name="author" />
+<base href="~/../" />
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link href="assets/css/google/app.min.css" rel="stylesheet" />
+<!-- ================== END BASE CSS STYLE ================== -->
+<link href="css/site.css" rel="stylesheet" />
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        head.PropertyChanged += async (object sender, PropertyChangedEventArgs e) =>
+        {
+            await InvokeAsync(() => { StateHasChanged(); });
+        };
+
+        await base.OnInitializedAsync();
+    }
+}

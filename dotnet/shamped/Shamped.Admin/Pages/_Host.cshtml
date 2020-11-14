@@ -1,5 +1,6 @@
 ﻿@page "/"
 @namespace Shamped.Admin.Pages
+@using Shamped.Admin.Components
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = null;
@@ -8,13 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shamped.Admin</title>
-    <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link href="_content/Shamped.Admin/_framework/scoped.styles.css" rel="stylesheet" />
+    <component type="typeof(Head)" render-mode="ServerPrerendered" />
 </head>
 <body>
     <component type="typeof(App)" render-mode="ServerPrerendered" />
@@ -31,5 +26,9 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+    <!-- ================== BEGIN BASE JS ================== -->
+    <script src="assets/js/app.min.js"></script>
+    <script src="assets/js/theme/google.min.js"></script>
+    <!-- ================== END BASE JS ================== -->
 </body>
 </html>

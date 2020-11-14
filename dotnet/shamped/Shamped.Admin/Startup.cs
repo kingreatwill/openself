@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Shamped.Admin.Components;
 using Shamped.Admin.Data;
 
 namespace Shamped.Admin
@@ -26,6 +27,7 @@ namespace Shamped.Admin
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddScoped<Head>();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
         }

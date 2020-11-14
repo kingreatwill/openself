@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shamped.Data", "Shamped.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shamped.Sword", "Shamped.Sword\Shamped.Sword.csproj", "{E0FB3484-B55D-4894-B40F-F1151BA2240A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shamped.Admin", "Shamped.Admin\Shamped.Admin.csproj", "{CC1518E6-F4A3-4225-A69F-B5B41173D8A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shamped.Admin", "Shamped.Admin\Shamped.Admin.csproj", "{CC1518E6-F4A3-4225-A69F-B5B41173D8A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
