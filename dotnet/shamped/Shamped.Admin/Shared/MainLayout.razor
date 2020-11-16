@@ -4,18 +4,21 @@
     <span class="spinner"></span>
 </div>
 <!-- end #page-loader -->
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<!-- begin #page-container -->
+<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed page-with-wide-sidebar page-with-light-sidebar">
+    <!-- begin #header -->
+    <Header />
+    <!-- end #header -->
+    <!-- begin #sidebar -->
+    <Sidebar />
+    <!-- end #sidebar -->
+    <!-- begin #content -->
+    <div id="content" class="content">
+        @Body
     </div>
-
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
-
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
+    <!-- end #content -->
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->    
 </div>
+<!-- end page container -->
